@@ -49,6 +49,7 @@ __init__ is the contructor method that is defining the initial attributes
 # defined object could be redesigned with eval(repl(obj))
 # #if __repl__ defined in class, the class information of created object can be seen later 
 
+"""
 class Coffee_Machine:
     def __init__(self):
         self.status = "Ready"
@@ -70,6 +71,7 @@ class Coffee_Machine:
         
 coffee = Coffee_Machine()
 coffee.handle("start")
+"""
 
 """
 class KahveMakinesi:
@@ -121,49 +123,47 @@ makine.olay("al")
 """
 
 """
+#state chain
 class State:
-    def handle(self, makine, komut):
+    def handle(self, machine, cmd):
         raise NotImplementedError
 
-
-class Hazir(State):
-    def handle(self, makine, komut):
-        if komut == "baslat":
-            print("☕ Kahve demleniyor...")
-            makine.durum = Demleniyor()
+class Ready(State):
+    def handle(self, machine, cmd):
+        if cmd == "start":
+            print("☕ Coffee is preparing...")
+            machine.durum = Infusion()
         else:
-            print("❌ Bu durumda yalnızca 'baslat' komutu geçerlidir.")
+            print("❌ You can command 'start' in this situation.")
 
-
-class Demleniyor(State):
-    def handle(self, makine, komut):
-        if komut == "tamam":
-            print("✅ Kahve hazır, lütfen alın.")
-            makine.durum = HazirBekliyor()
+class Infusion(State):
+    def handle(self, machine, cmd):
+        if cmd == "okay":
+            print("✅ Coffee is ready to take.")
+            machine.durum = Waiting()
         else:
-            print("❌ Bu durumda yalnızca 'tamam' komutu geçerlidir.")
+            print("❌ You can command 'okay' in this situation.")
 
 
-class HazirBekliyor(State):
-    def handle(self, makine, komut):
-        if komut == "al":
-            print("🎉 Afiyet olsun! Yeni kahve yapılabilir.")
-            makine.durum = Hazir()
+class Waiting(State):
+    def handle(self, machine, cmd):
+        if cmd == "take":
+            print("🎉 Bona apetite.")
+            machine.durum = Ready()
         else:
-            print("❌ Bu durumda yalnızca 'al' komutu geçerlidir.")
+            print("❌ You can command 'take' in this situation.")
 
-class KahveMakinesi:
+class CoffeMachine:
     def __init__(self):
-        self.durum = Hazir()
+        self.durum = Ready()
 
-    def olay(self, komut):
-        self.durum.handle(self, komut)
+    def init(self, cmd):
+        self.durum.handle(self, cmd)
 
-makine = KahveMakinesi()
-makine.olay("baslat")
-makine.olay("tamam")
-makine.olay("al")
-                    
+coffee = CoffeMachine()
+coffee.init("start")
+coffee.init("okay")
+coffee.init("take")
 """
 
 """
@@ -193,7 +193,6 @@ makine.baslat()        # hazir → demleniyor
 makine.durum_ver()     # 🔄 Şu anki durum: demleniyor
 makine.tamamla()       # demleniyor → hazir_bekliyor
 makine.al()            # hazir_bekliyor → hazir
-
 """
 
 """
