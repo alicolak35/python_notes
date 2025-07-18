@@ -13,17 +13,28 @@ app = Flask(__name__)
 def about():
     return "About page"
 
-@app.route("/")
-def home():
-    return render_template('home.html')
+# @app.route("/")
+# def home():
+#     return render_template('home.html')
 
-@app.route("/form")
+@app.route("/")
 def form():
     return render_template("form.html")
 
-@app.route("/submit", methods=["POST"])
-def submit():
-    username = request.values.get("username")
-    return f"Welcome, {username}"
+# @app.route("/name", methods=["POST"])
+# def submit():
+#     return render_template("age.html")    
+
+@app.route("/age", methods=["POST"])
+def form_age():
+    return render_template("age.html")
+
+@app.route("/print", methods=["POST"])
+def print_out():
+    age = request.form["age"]#get("age")
+    username = request.form["username"]
+    return f"So {username}, you are {age} years old ha!" 
+
+
 if __name__ == '__main__':
     app.run(debug=True)#Debug mode causes security problems. Therefore this mode should be enabled only during development.
