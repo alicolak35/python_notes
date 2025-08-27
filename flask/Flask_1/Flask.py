@@ -7,23 +7,17 @@ PUT: updates an existing source
 DELETE: deletes a resource
 PATCH: partially updates a resource
 """
+
+
 app = Flask(__name__)
 
 @app.route("/about")
 def about():
     return "About page"
 
-# @app.route("/")
-# def home():
-#     return render_template('home.html')
-
 @app.route("/")
 def form():
     return render_template("form.html")
-
-# @app.route("/name", methods=["POST"])
-# def submit():
-#     return render_template("age.html")    
 
 @app.route("/age", methods=["POST"])
 def form_age():
@@ -38,3 +32,5 @@ def print_out():
 
 if __name__ == '__main__':
     app.run(debug=True)#Debug mode causes security problems. Therefore this mode should be enabled only during development.
+
+

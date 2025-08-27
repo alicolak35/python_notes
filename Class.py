@@ -225,3 +225,20 @@ makine.olay("baslat")
 makine.olay("tamam")
 makine.olay("al")
 """
+
+class School():
+    def __init__(self, school_name:str):
+        self.school_name = school_name
+        
+class Student(School):
+    def __init__(self, name:str, school_name, weight:float, height:float):
+        super().__init__(school_name)# inherites from School class but it has not "string" precondition 
+        self.name = name
+        self.boy = height
+        self.kilo = weight
+    
+    def print_out(self):
+        print(f"{self.name} is studying at {self.school_name}, and has height {self.boy} and weight {self.kilo}")
+
+halim = Student("Halim", "Mentese Anadolu", 65, 188)
+halim.print_out()
