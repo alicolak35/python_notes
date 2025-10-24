@@ -25,7 +25,7 @@ if __name__ == "__main__":
     logging.info("Main    : all done")
 """
 
-
+"""
 def thread_function(name):
     logging.info("Thread %s: starting", name)
     time.sleep(2)
@@ -47,3 +47,12 @@ if __name__ == "__main__":
         logging.info("Main    : before joining thread %d.", index)
         thread.join()
         logging.info("Main    : thread %d done", index)
+"""
+
+
+t = 5
+if t > 6:
+    raise Exception("Exception") #if this condition occurs, the Exception occurs and program stops
+
+for i in range(4):
+    print(i)

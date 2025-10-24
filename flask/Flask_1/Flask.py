@@ -17,7 +17,7 @@ def about():
 
 @app.route("/")
 def form():
-    return render_template("form.html")
+    return render_template("home.html")
 
 @app.route("/age", methods=["POST"])
 def form_age():

@@ -1,6 +1,6 @@
 from datetime import datetime
 import time    
-
+from fundamentals import kilass
 
 
 date = [2025, 8, 1, 8, 10,00]
@@ -21,9 +21,20 @@ def timestap_check(last_ts):
     else:
         return 0
     
+def ff1():
+    try:
+        for i in range(5):
+            if (i+1) == 3 :                 
+                return i          
+            else:
+                print(i)                
+    
+    except Exception as e:
+        print(f"{e}")
+    
+
 if __name__ == '__main__':
-    a = int(time.time()) * 1000
-    b = 10
     
-    
-    
+    abc = ff1()
+
+    a = 1

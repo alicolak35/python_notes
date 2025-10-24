@@ -62,3 +62,4 @@ if __name__ == "__main__":
     #if deleted value is not necassary, sozluk.pop(872, None) can be used 
 
  
+
