@@ -20,6 +20,8 @@ class Cla():
     """
 
 
+ass = Cla(5, "sss")
+
 # @dataclass
 # class C:
 #     mylist: list[int] = field(default_factory=list)
@@ -42,5 +44,18 @@ def say_hello():
     print("Hello!")
 
 say_hello()
+# say_hello()
 
+# def wrapper() :
+#     print("Before")
+#     # func()
+#     print("After")
+
+#     return wrapper
+
+# hi = wrapper()
+
+# hi()
+
+a = 3
 

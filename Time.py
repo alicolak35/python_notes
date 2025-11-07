@@ -1,6 +1,6 @@
 from datetime import datetime
 import time    
-from fundamentals import kilass
+from Fundamentals import kilass
 
 
 date = [2025, 8, 1, 8, 10,00]
